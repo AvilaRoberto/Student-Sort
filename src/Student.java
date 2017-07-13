@@ -12,32 +12,55 @@ public class Student {
     private String last;
     private List<String> priorities;
 
+    /**
+     * Class constructor.
+     */
     Student(){
         this.first = "n/a";
         this.last = "n/a";
         this.priorities = new ArrayList<>();
     }
 
+    /**
+     * Class constructor specifying a student by first and last name.
+     */
     Student(String f, String l){
         this.first = f;
         this.last = l;
         this.priorities = new ArrayList<>();
     }
 
+    /**
+     * Class constructor specifying a student by first and last name
+     * and prio list.
+     */
     Student(String f, String l, List<String> prios){
         this.first = f;
         this.last = l;
         this.priorities = new ArrayList<>(prios);
     }
 
+    /**
+     * Returns the students last and first name, separated by a comma as a string.
+     *
+     * @return  a name as a string.
+     */
     public String getFullName(){
         return this.last + "," + this.first;
     }
 
+    /**
+     * Returns the number of items in the students prio list as an integer.
+     *
+     * @return an integer describing the size of the students prio list.
+     */
     public int getNumberPriorities(){
         return this.priorities.size();
     }
 
+    /**
+     * Prints the priority list, each item separated by a newline.
+     */
     public void printPrios(){
         for(String p: this.priorities){
             System.out.println(p);
