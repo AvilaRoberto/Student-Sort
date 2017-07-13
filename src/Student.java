@@ -2,6 +2,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * This class describes a student by their, first and last name, and their
+ * list of prioritized courses.
+ *
  * Created by rober on 6/30/2017.
  */
 public class Student {
