@@ -5,10 +5,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
- * Created by rober on 6/30/2017.
+ * This class reads student and course information from a file, and creates
+ * the appropriate Student and Course objects.
  */
 public class CourseStudentReader {
     private List<String> courseNames;
@@ -35,6 +37,10 @@ public class CourseStudentReader {
         }
     }
 
+    /**
+     * Reads a .csv file to get student names, course names, and priority lists.
+     * @throws IOException
+     */
     private void readData() throws IOException{
         //Read STUDENTS from file.
         Reader inStudents = new FileReader(this.fileToRead);
@@ -61,7 +67,7 @@ public class CourseStudentReader {
                     //make new object.
                     if(!courseNames.contains(cls)){
                         courseNames.add(cls);
-                        courses.add(new Course(cls));
+//                        courses.add(new Course(cls));
                     }
                 }
             }
@@ -70,14 +76,26 @@ public class CourseStudentReader {
             //First and last names are in indexes 2, and 1.
             students.add(new Student(rec.get(1), rec.get(0), prios));
         }
-    }
 
-    public void printAllCourses(){
-        for(Course c: this.courses){
-            System.out.println(c.getName());
+        //Sort names and create Course objects from the sorted list.
+        Collections.sort(this.courseNames);
+        for(String s: this.courseNames){
+            this.courses.add(new Course(s));
         }
     }
 
+    /**
+     * Outputs course names separated by newlines.
+     */
+    public void printAllCourses(){
+        for(String s: this.courseNames){
+            System.out.println(s);
+        }
+    }
+
+    /**
+     * Outputs student names separated by newlines.
+     */
     public void printAllStudents(){
         for(Student s: this.students){
             System.out.println(s.getFullName());
