@@ -39,6 +39,7 @@ public class CourseStudentReader {
 
     /**
      * Reads a .csv file to get student names, course names, and priority lists.
+     *
      * @throws IOException
      */
     private void readData() throws IOException{
