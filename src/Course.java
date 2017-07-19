@@ -10,7 +10,7 @@ public class Course {
     private List<String> students;
     private int numberOfStudents;
     private int maxStudents;
-    private int MAX_STUDENTS = 15;
+    private int MAX_STUDENTS = 50;
 
     Course(){
         this.name = "n/a";
