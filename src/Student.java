@@ -66,4 +66,11 @@ public class Student {
             System.out.println(p);
         }
     }
+
+    /**
+     * @return students priority List.
+     */
+    public List<String> getPriorities(){
+        return this.priorities;
+    }
 }
