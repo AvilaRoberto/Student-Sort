@@ -13,10 +13,16 @@ import java.util.List;
  * the appropriate Student and Course objects.
  */
 public class CourseStudentReader {
-    private List<String> courseNames;
-    private List<Course> courses;
-    private List<Student> students;
-    private String fileToRead;
+    protected List<String> courseNames;
+    protected List<Course> courses;
+
+    protected List<Student> students;
+
+    protected String fileToRead;
+
+    protected List<Group> groups;
+    public int numberOfGroups;
+    public int DEFAULT_NUMBER_GROUPS = 5;
 
     CourseStudentReader() throws IOException{
         this.courseNames = new ArrayList<>();
@@ -24,6 +30,8 @@ public class CourseStudentReader {
         this.students = new ArrayList<>();
         this.fileToRead = "src/files/SUN-summer-17.csv";
         readData();
+        this.groups = new ArrayList<>();
+        this.numberOfGroups = DEFAULT_NUMBER_GROUPS;
     }
 
     CourseStudentReader(List<Course> cours, List<Student> studs, String file){
@@ -31,6 +39,8 @@ public class CourseStudentReader {
         this.courses = new ArrayList<>(cours);
         this.students = new ArrayList<>(studs);
         this.fileToRead = file;
+        this.groups = new ArrayList<>();
+        this.numberOfGroups = DEFAULT_NUMBER_GROUPS;
 
         for(Course c: this.courses){
             this.courseNames.add(c.getName());
@@ -100,6 +110,12 @@ public class CourseStudentReader {
     public void printAllStudents(){
         for(Student s: this.students){
             System.out.println(s.getFullName());
+        }
+    }
+
+    public void printCourseAndStudents(){
+        for(Course crs: this.courses){
+            crs.printStudents();
         }
     }
 

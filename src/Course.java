@@ -47,10 +47,27 @@ public class Course {
         this.numberOfStudents = this.students.size();
     }
 
+    public boolean addStudent(Student s){
+        if(this.numberOfStudents > this.maxStudents){
+            return false;
+        }
+
+        this.students.add(s.getFullName());
+        return true;
+    }
+
     /**
      * @return the course name as a string.
      */
     public String getName(){
         return this.name;
+    }
+
+    public void printStudents() {
+        System.out.println("**" + this.name + "**");
+        for(String s: this.students){
+            System.out.println(s);
+        }
+        System.out.println();
     }
 }

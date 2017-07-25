@@ -10,7 +10,7 @@ import java.util.List;
 public class Student {
     private String first;
     private String last;
-    private List<String> priorities;
+    public List<String> priorities;
 
     /**
      * Class constructor.
