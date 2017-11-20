@@ -12,6 +12,9 @@ public class Course {
     private int maxStudents;
     private int MAX_STUDENTS = 50;
 
+    /**
+     * Default constructor.
+     */
     Course(){
         this.name = "n/a";
         this.students = new ArrayList<>();
@@ -48,9 +51,35 @@ public class Course {
     }
 
     /**
-     * @return the course name as a string.
+     * Adds a Student object to the course student list.
+     *
+     * @param s a Student object.
+     * @return true if successful. False otherwise.
+     */
+    public boolean addStudent(Student s){
+        if(this.numberOfStudents > this.maxStudents){
+            return false;
+        }
+
+        this.students.add(s.getFullName());
+        return true;
+    }
+
+    /**
+     * @return The name of the course as a string.
      */
     public String getName(){
         return this.name;
+    }
+
+    /**
+     * Prints the student list, newline separated.
+     */
+    public void printStudents() {
+        System.out.println("**" + this.name + "**");
+        for(String s: this.students){
+            System.out.println(s);
+        }
+        System.out.println();
     }
 }

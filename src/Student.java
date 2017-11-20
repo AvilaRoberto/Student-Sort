@@ -11,6 +11,7 @@ public class Student {
     private String first;
     private String last;
     private List<String> priorities;
+    private List<String> peers;
 
     /**
      * Class constructor.
@@ -19,6 +20,7 @@ public class Student {
         this.first = "n/a";
         this.last = "n/a";
         this.priorities = new ArrayList<>();
+        this.peers = new ArrayList<>();
     }
 
     /**
@@ -28,6 +30,7 @@ public class Student {
         this.first = f;
         this.last = l;
         this.priorities = new ArrayList<>();
+        this.peers = new ArrayList<>();
     }
 
     /**
@@ -38,6 +41,7 @@ public class Student {
         this.first = f;
         this.last = l;
         this.priorities = new ArrayList<>(prios);
+        this.peers = new ArrayList<>();
     }
 
     /**
@@ -63,7 +67,61 @@ public class Student {
      */
     public void printPrios(){
         for(String p: this.priorities){
-            System.out.println(p);
+            System.out.println("\t" + p);
         }
     }
+
+    /**
+     * @return students priority List.
+     */
+    public List<String> getPriorities(){
+        return new ArrayList<String>(this.priorities);
+    }
+
+    public List<String> getPeers() { return this.peers; }
+
+    public void addPeer(String p){
+        this.peers.add(p);
+    }
+
+    /**
+     * Determines if the two objects have at least one prio in common.
+     *
+     * @param std the Student we are comparing with.
+     * @param sims number of wanted similarities.
+     * @return true if the students share 'sims' prio.
+     *          false otherwise.
+     */
+    public boolean sharePrioWith(Student std, int sims){
+
+        int priosShared = 0;
+        for(String s: this.priorities){
+            if(priosShared == sims){
+                return true;
+            }
+            if(std.priorities.contains(s)){
+                priosShared += 1;
+            }
+        }
+        return priosShared == sims;
+
+    }
+
+    public void printPeers(){
+        for(String s: this.peers){
+            System.out.println("\t" + s);
+        }
+    }
+
+    public int getNumberPeers(){
+        return this.peers.size();
+    }
+
+    public String getPeer(){
+        if(this.peers.isEmpty()){
+            return null;
+        }
+        return this.peers.get(0);
+    }
+
 }
